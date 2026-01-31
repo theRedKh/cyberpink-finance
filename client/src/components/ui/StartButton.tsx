@@ -13,6 +13,9 @@ export default function StartButton() {
 
   const handleStart = () => {
     console.log('Start button clicked - home page not yet implemented');
+    // Temporarily disabled - home page not ready
+    // navigate('/home');
+    console.log('Start button clicked - home page not yet implemented');
   };
 
   return (
