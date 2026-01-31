@@ -17,79 +17,40 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
       id: "q2",
       question: "Fill in the blank: A ________ account typically has a lower transaction fee, making it great for everyday use.",
       options: [
-        "Checking",
-        "Savings"
+        "Savings",
+        "Checking"
+        
       ],
-      answer: 0
+      answer: 1
     },
+    
     {
       id: "q3",
-      question: "Fill in the blank: _____ account typically has a lower transaction fee, making it great for everyday use.",
-      options: ["Checking", "Savings", "Investment", "Credit"],
-      answer: 0,
-      explanation: "A checking account is great for everyday use due to its lower transaction fee, for example paying recurring bills."
-    },
-    {
-      id: "q4",
       question: "You have the choice between two banks. Celestial Corp offers 2.25% annual interest, Influx Inc offers 0.5%. Who do you go with?",
-      options: ["Celestial Corp", "Influx Inc", "Doesn't matter", "Neither"],
-      answer: 0,
-      explanation: "Celestial Corp has the better rate. A higher interest rate means you will earn more money."
-    },
-    {
-      id: "q5",
-      question: "Which card directly uses money from your checking account?",
-      options: ["Debit", "Credit", "Gift card", "Playing card"],
-      answer: 0,
-      explanation: "A debit card directly uses money from your checking account."
-    },
-    {
-      id: "q6",
-      question: "Oh no! You missed a credit card payment. What might the bank do?",
       options: [
         "Influx Inc - 0.5% interest",
         "Celestial Corp - 2.25% interest",
         "Either one is fine, interest rates don't matter",
         "Don't use banks"
       ],
-      answer: 1
+      answer: 0,
+      explanation: "Celestial Corp has the better rate. A higher interest rate means you will earn more money."
     },
+
     {
       id: "q4",
       question: "Which card directly uses money from your checking account?",
-      id: "q4",
-      question: "Which card directly uses money from your checking account?",
-      options: [
-        "Credit Card",
-        "Gift Card",
-        "Debit Card",
-        "All of the above"
-      ],
-      answer: 2
+      options: ["Gift card", "Playing card", "Debit card", "Credit card"],
+      answer: 2,
+      explanation: "A debit card directly uses money from your checking account."
     },
     {
       id: "q5",
-      question: "Oh no! You missed a credit card payment deadline. What happens now?",
-      options: [  
-      "Nothing, it's fine everyone misses deadlines sometimes",
-      "You may be charged interest on top of what you owe and it can hurt your credit score",
-      "Just pay next month, it will all even out",
-      "Your credit card company will forgive you this one time"
-      ],
-      answer: 1
-      answer: 2
+      question: "Oh no! You missed a credit card payment. What might the bank do?",
+      options:["Nothing, its okay everyone misses payments", "Just pay the exact amount asap", "The bank give you a gift card","You may be charged interest, on top of what you owe" ],
+      answer: 3
     },
-    {
-      id: "q5",
-      question: "Oh no! You missed a credit card payment deadline. What happens now?",
-      options: [  
-      "Nothing, it's fine everyone misses deadlines sometimes",
-      "You may be charged interest on top of what you owe and it can hurt your credit score",
-      "Just pay next month, it will all even out",
-      "Your credit card company will forgive you this one time"
-      ],
-      answer: 0
-    },
+    
     {
       id: "q6",
       question: "True or False: With a debit card, you can spend more money than you have in your checking account.",
