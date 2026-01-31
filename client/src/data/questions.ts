@@ -75,38 +75,97 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
   quest2: [
     {
       id: "q1",
-      question: "You need $50 for new headphones. Where should you borrow from?",
+      question: "Ella wants to buy a new bike, but she doesn't have enough. What should she do?",
       options: [
-        "Payday loan - borrow $50, pay back $150",
-        "Friend's sketchy cousin",
-        "Student loan - borrow $50, pay back $55",
-        "Don't buy the headphones"
+        "Ella should take out a Payday loan, borrow $50, pay back $150",
+        "Ella should budget and save up for the bike over time",
+        "Ella should steal the money from her mom's purse",
+        "Ella shouldn't buy the bike at all"
       ],
-      answer: 2
+      answer: 1
     },
     {
       id: "q2",
-      question: "You make $80 from babysitting. How should you split it?",
+      question: "True or False: You have to pay back grants in full including any interest fees.",
       options: [
-        "Spend all $80 right now",
-        "Save $15, spend $50, invest $15",
-        "Save $1, spend $79",
-        "Give it all to your parents"
+        "True",
+        "False"
       ],
       answer: 1
     },
     {
       id: "q3",
-      question: "What's the difference between NEEDS and WANTS?",
+      question: "Fill in the blank: _______ is the amount of time that you have to repay a loan.",
       options: [
-        "Everything you buy is a need",
-        "Needs = must have (food, shelter), Wants = nice to have (games, snacks)",
-        "Wants are more important than needs",
-        "There's no difference"
+        "Loan rate",
+        "Interest rate",
+        "Loan term",
+        "Interest term"
+      ],
+      answer: 2
+    },
+    {
+      id: "q4",
+      question: "True or False: Payday loans are low risk and a good way to borrow money for small purchases.",
+      options: [
+        "True",
+        "False"
       ],
       answer: 1
-    }
-  ],
+    },
+    {
+      id: "q5",
+      question: "True or False: You should never take out a loan, it is too risky.",
+      options: [
+        "True",
+        "False"
+      ],
+      answer: 1
+    },
+    {
+      id: "q6",
+      question: "Carly needs a loan of $3000 and is deciding between two loans. Celestial Corp is offering a loan with a principal of $5000 and an interest rate of 3.95%. Influx Inc is offering a loan with a principal of $7500 and an interest rate of 6%. Which loan should Carly take?",
+      options: [
+        "Carly should take the Celestial Corp loan",
+        "Carly should take the Influx Inc loan",
+        "Carly should take both loans"
+      ],
+      answer: 0
+    },
+{
+      id: "q7",
+      question: "Fill in the blank: _______ allow you to borrow a fixed amount of money and pay it back over a certain period.",
+      options: [
+        "Student Loans",
+        "Mortgage",
+        "Personal Loans",
+        "Payday Loans"
+      ],
+      answer: 2
+    },
+    {
+      id: "q8",
+      question: "Why are student loans generally considered lower risk than some other loans?",
+      options: [
+        "They usually have lower interest rates and flexible repayment options",
+        "They lend more money on average",
+        "They never have to be paid back",
+        "They aren't considered lower risk, they are one of the riskest loans"
+      ],
+      answer: 0
+    },
+    {
+      id: "q9",
+      question: "Why do banks use to decide what kind of loan you have?",
+      options: [
+        "Credit Score",
+        "Credit Limit",
+        "Interest Rate",
+        "All of the above"
+      ],
+      answer: 0
+    },
+ ],
   quest3: [
     {
       id: "q1",
