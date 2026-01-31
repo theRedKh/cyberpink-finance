@@ -5,7 +5,8 @@ import '../../styles/globals.css';
 interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
-  small?: boolean; 
+  small?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const Button = ({ onClick, children, small, style, ...rest }: ButtonProps) => {
