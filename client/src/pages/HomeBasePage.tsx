@@ -1,2 +1,8 @@
-//celestial corp page with cat guy 
-//reused for character iterating to home base
+export default function HomeBasePage() {
+    return (
+        <main>
+            <h1>Home Base</h1>
+            <p>Home Base Page</p>
+        </main>
+    );
+}
