@@ -1,4 +1,3 @@
-// pages/IntroPage.tsx
 import { useState, useEffect } from 'react';
 import LoreText from '../components/ui/LoreText';
 import StartButton from '../components/ui/StartButton';
@@ -11,7 +10,6 @@ export default function IntroPage() {
   const [stage, setStage] = useState<IntroStage>("boot");
 
   useEffect(() => {
-    // Start showing lore after initial delay
     const timer = setTimeout(() => setStage("lore"), 1000);
     return () => clearTimeout(timer);
   }, []);
@@ -38,7 +36,6 @@ export default function IntroPage() {
         zIndex: 0,
       }}
     >
-      {/* Dark overlay */}
       <div
         style={{
           position: 'absolute',
