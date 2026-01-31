@@ -7,7 +7,7 @@ export const HomeBasePage = () => {
   const navigate = useNavigate();
 
   const startGame = () => {
-    navigate('/intro'); 
+    navigate('/bank');
   };
 
   return (
@@ -52,7 +52,9 @@ export const HomeBasePage = () => {
           defeating monsters, and making smart money choices.
         </p>
 
-        <Button onClick={startGame}>▶ Play Game</Button>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+          <Button onClick={startGame}>▶ Play Game</Button>
+        </div>
       </Card>
     </div>
   );

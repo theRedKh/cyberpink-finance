@@ -36,7 +36,7 @@ export const EndPage = () => {
         }}
       >
         <h2 style={{ color: '#00ff00', marginBottom: '1rem' }}>
-          🎉 Congratulations! You Won! 🎉
+         Congratulations! You Won!
         </h2>
 
         <p style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '2rem' }}>
