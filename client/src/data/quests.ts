@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { QuestId } from "../game/types";
 
 export type Quest = {
@@ -58,3 +59,37 @@ export function getQuestsInOrder(): Quest[] {
   const order: QuestId[] = ["quest1", "quest2", "quest3", "quest4"];
   return order.map(id => QUESTS[id]);
 }
+=======
+import type { Quest } from "../game/types";
+
+export const QUESTS:Quest[] = [
+    {
+        id: "quest1",
+        name: "The Last Good Bank",
+        fights: 2,
+        rewardType: "weapon",
+        isBoss: false
+      },
+      {
+        id: "quest2",
+        name: "Debt District",
+        fights: 2,
+        rewardType: "armor",
+        isBoss: false
+      },
+      {
+        id: "quest3",
+        name: "The Investment Vault",
+        fights: 3,
+        rewardType: "ability",
+        isBoss: false
+      },
+      {
+        id: "boss",
+        name: "Influx Core",
+        fights: 1,
+        isBoss: true
+      }
+    
+];
+>>>>>>> 4a6b422582c485804a948de602d270c9fb3a3b58
