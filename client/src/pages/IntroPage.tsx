@@ -1,4 +1,4 @@
-// pages/IntroPage.tsx
+// pages/IntroPage.tsx -- single use right at the beginning
 import { useState, useEffect } from 'react';
 import LoreText from '../components/ui/LoreText';
 import StartButton from '../components/ui/StartButton';

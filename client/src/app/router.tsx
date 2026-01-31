@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import IntroPage from  "../pages/IntroPage";
+import MapPage from "../pages/MapPage";
 // Temporarily disabled incomplete pages for testing
 // import HomeBasePage from "../pages/HomeBasePage";
 // import InfoCardsPage from "../pages/InfoCardsPage";
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <IntroPage />
+    },
+    {
+        path: "/map",
+        element: <MapPage />
     },
     // Temporarily disabled incomplete pages for testing
     // {

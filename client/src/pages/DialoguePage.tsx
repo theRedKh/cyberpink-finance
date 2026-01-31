@@ -1,0 +1,1 @@
+//reusable dialogue page for npc scenes
