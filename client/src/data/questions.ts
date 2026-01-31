@@ -4,36 +4,33 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
   quest1: [
     {
       id: "q1",
-      question: "You got $100 for your birthday! You need $20 for this weekend. Where should the rest go?",
+      question: "True or False: There is no point in starting a savings account as a teen.",
+
       options: [
-        "Chequing account - easy to spend anytime",
-        "Savings account/TFSA - it grows over time",
-        "Hide it in your room",
-        "Spend it all now"
+        "True",
+        "False"
       ],
-      answer: 1
+      answer: 0
     },
     {
       id: "q2",
-      question: "You're buying a $30 hoodie. You have $50 in your account. Which card?",
+      question: "Fill in the blank: A ________ account typically has a lower transaction fee, making it great for everyday use.",
       options: [
-        "Credit card - buy now, pay later",
-        "Debit card - use money you already have",
-        "Doesn't matter, same thing",
-        "Borrow from a friend"
+        "Checking",
+        "Savings"
       ],
-      answer: 1
+      answer: 0
     },
     {
       id: "q3",
-      question: "Time to pick a bank! Which one?",
+      question: "You have the choice between two banks. Celestial Corp is offering a savings account with 2.25%% annual interest and Influx Inc is offering a savings account with 0.5% annual interest. Who do you want to go with?",
       options: [
-        "Good Bank - Free, no fees, money grows",
-        "Bad Bank - $10/month fees, no benefits",
-        "All banks are the same",
+        "Influx Inc - 0.5% interest",
+        "Celestial Corp - 2.25% interest",
+        "Either one is fine, interest rates don't matter",
         "Don't use banks"
       ],
-      answer: 0
+      answer: 1
     }
   ],
   quest2: [
