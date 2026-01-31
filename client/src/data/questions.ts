@@ -106,9 +106,9 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
       answer: 2
     }
   ],
-  boss: [
+  quest4: [
     {
-      id: "b1",
+      id: "q1",
       question: "FINAL CHALLENGE: What's the smartest money move for your future?",
       options: [
         "Spend everything, save nothing",
