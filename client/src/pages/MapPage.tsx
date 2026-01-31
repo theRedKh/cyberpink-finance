@@ -5,6 +5,7 @@ import { useGame } from '../app/GameProvider';
 import { getQuestsInOrder } from '../data/quests';
 import { startQuest } from '../game/engine';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../components/ui/Button';
 import type { QuestId } from '../game/types';
 import mainWallpaper from '../assets/images/main_wallpaper.png';
 
@@ -359,38 +360,12 @@ export default function MapPage() {
             ))}
           </div>
 
-          {/* Back to Home Base Button */}
-          <button
-            onClick={() => navigate('/bank')}
-            style={{
-              marginTop: '3rem',
-              padding: '1rem 2rem',
-              fontSize: '1rem',
-              fontFamily: '"Orbitron", system-ui, Avenir, Helvetica, Arial, sans-serif',
-              fontWeight: 'bold',
-              color: '#ffffff',
-              backgroundColor: 'rgba(20, 0, 20, 0.8)',
-              border: '2px solid #ff00ff',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              boxShadow: '0 0 20px #ff00ff, inset 0 0 20px rgba(255, 0, 255, 0.2)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(30, 0, 30, 0.9)';
-              e.currentTarget.style.borderColor = '#ff66ff';
-              e.currentTarget.style.boxShadow = '0 0 30px #ff00ff, 0 0 40px #ff00ff';
-              e.currentTarget.style.transform = 'scale(1.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(20, 0, 20, 0.8)';
-              e.currentTarget.style.borderColor = '#ff00ff';
-              e.currentTarget.style.boxShadow = '0 0 20px #ff00ff, inset 0 0 20px rgba(255, 0, 255, 0.2)';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
-          >
-            Back to Bank Teller
-          </button>
+          {/* Back to Bank Teller (consistent Button component) */}
+          <div style={{ marginTop: '3rem', display: 'flex', justifyContent: 'center' }}>
+            <Button small onClick={() => navigate('/bank')}>
+              Back to Bank Teller
+            </Button>
+          </div>
         </div>
       </div>
     </>
