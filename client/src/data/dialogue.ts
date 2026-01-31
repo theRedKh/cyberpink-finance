@@ -46,7 +46,12 @@ export const DIALOGUE: DialogueStructure = {
     },
     npcScene: [
         // NPC scene occurs once, right before the first transition to home base
-        // Add dialogue entries here
+        {
+            id: "npc_intro_1",
+            speaker: "Last Banker",
+            text: "Welcome, traveler. I am the Last Banker, keeper of the old ways. Before you begin your journey, you must understand the fundamentals of banking.",
+            sceneType: "pre-quest"
+        },
     ],
     bossScene: {
         quest4: [
