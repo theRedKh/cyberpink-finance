@@ -52,7 +52,7 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
         "Either one is fine, interest rates don't matter",
         "Don't use banks"
       ],
-      answer: 1
+      answer: 0
     },
     {
       id: "q4",
@@ -74,7 +74,7 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
       "Just pay next month, it will all even out",
       "Your credit card company will forgive you this one time"
       ],
-      answer: 1
+      answer: 0
     },
     {
       id: "q6",
