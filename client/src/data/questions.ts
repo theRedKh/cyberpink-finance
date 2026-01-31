@@ -38,17 +38,39 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
     },
 
     {
+      
       id: "q4",
       question: "Which card directly uses money from your checking account?",
-      options: ["Gift card", "Playing card", "Debit card", "Credit card"],
-      answer: 2,
-      explanation: "A debit card directly uses money from your checking account."
+      options: [
+        "Credit Card",
+        "Gift Card",
+        "Debit Card",
+        "All of the above"
+      ],
+      answer: 2
     },
     {
       id: "q5",
-      question: "Oh no! You missed a credit card payment. What might the bank do?",
-      options:["Nothing, its okay everyone misses payments", "Just pay the exact amount asap", "The bank give you a gift card","You may be charged interest, on top of what you owe" ],
-      answer: 3
+      question: "Oh no! You missed a credit card payment deadline. What happens now?",
+      options: [  
+      "Nothing, it's fine everyone misses deadlines sometimes",
+      "You may be charged interest on top of what you owe and it can hurt your credit score",
+      "Just pay next month, it will all even out",
+      "Your credit card company will forgive you this one time"
+      ],
+      answer: 1
+      
+    },
+    {
+      id: "q5",
+      question: "Oh no! You missed a credit card payment deadline. What happens now?",
+      options: [  
+      "Nothing, it's fine everyone misses deadlines sometimes",
+      "You may be charged interest on top of what you owe and it can hurt your credit score",
+      "Just pay next month, it will all even out",
+      "Your credit card company will forgive you this one time"
+      ],
+      answer: 0
     },
     
     {
