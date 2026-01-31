@@ -57,6 +57,8 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
     {
       id: "q4",
       question: "Which card directly uses money from your checking account?",
+      id: "q4",
+      question: "Which card directly uses money from your checking account?",
       options: [
         "Credit Card",
         "Gift Card",
@@ -79,10 +81,15 @@ export const QUESTIONS: Record<QuestId, Question[]> = {
     {
       id: "q6",
       question: "True or False: With a debit card, you can spend more money than you have in your checking account.",
+      id: "q6",
+      question: "True or False: With a debit card, you can spend more money than you have in your checking account.",
       options: [
         "True",
         "False"
+        "True",
+        "False"
       ],
+      answer: 1 
       answer: 1 
     }
   ],
