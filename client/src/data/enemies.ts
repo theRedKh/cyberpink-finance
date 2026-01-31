@@ -1,3 +1,4 @@
+//all enemy descriptions
 export type Enemy = {
   id: string;
   name: string;
