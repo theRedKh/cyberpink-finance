@@ -1,12 +1,13 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router'
+import { GameProvider } from './GameProvider'
 import '../App.css'
 
 function App() {
- 
-
   return (
-    <RouterProvider router={router} />
+    <GameProvider>
+      <RouterProvider router={router} />
+    </GameProvider>
   )
 }
 
