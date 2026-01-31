@@ -9,7 +9,6 @@ export type DialogueEntry = {
 };
   
   export const DIALOGUE = {
-    preQuest1: [...],
-    preBoss: [...],
+    
     // etc.
 };
