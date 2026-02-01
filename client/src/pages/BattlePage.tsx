@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Monster from "../components/battle/Monster";
 import { QuestionCard } from "../components/battle/QuestionCard";
 import { useGame } from "../app/GameProvider";
-import battleBg from "../assets/images/main_wallpaper.png"; 
+import StatsBar from "../components/hud/StatsBar";
 
 export default function BattlePage() {
   const { gameState, setGameState } = useGame();

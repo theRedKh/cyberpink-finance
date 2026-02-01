@@ -7,7 +7,6 @@ interface ModalProps {
   children: React.ReactNode;
   questName?: string;
   playerState?: {
-    hp?: number;
     credits?: number;
     clarity?: number;
     creditScore?: string;
@@ -87,7 +86,6 @@ export const Modal: React.FC<ModalProps> = ({
             {questName && <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#ff00ff' }}>Quest: {questName}</div>}
             {playerState && (
               <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.95rem' }}>
-                {playerState.hp !== undefined && <span>HP: <strong style={{ color: '#ff00ff' }}>{playerState.hp}</strong></span>}
                 {playerState.credits !== undefined && <span>Credits: <strong style={{ color: '#ff00ff' }}>{playerState.credits}</strong></span>}
               </div>
             )}

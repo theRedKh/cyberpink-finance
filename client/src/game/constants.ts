@@ -1,11 +1,10 @@
 import type { QuestId } from "./types";
-
-export const STARTING_HP = 10;
-export const STARTING_CREDITS = 100;
-export const STARTING_CLARITY = 0;
-
-export const CREDITS_PER_CORRECT = 10;
-export const CREDITS_PER_WRONG = -5; 
+export const STARTING_CREDITS = 0;
+export const CREDITS_Q1 = 20;
+export const CREDITS_Q2 = 25;
+export const CREDITS_Q3 = 25;
+export const CREDITS_PER_CORRECT = 10; 
+export const CREDITS_PER_WRONG = -2; 
 export const CREDITS_FOR_GOOD_BANK = 500;
 export const BAD_BANK_MONTHLY_FEE = 10; 
 
