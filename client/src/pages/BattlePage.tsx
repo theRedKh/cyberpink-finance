@@ -141,7 +141,7 @@ export default function BattlePage() {
             }} />
           </div>
           <div style={{ color: '#ff00ff', fontSize: '0.65rem', marginTop: '0.6rem', letterSpacing: '2px', fontWeight: 'bold' }}>
-            TARGET INTEGRITY: {Math.round(monsterHp)}%
+            TARGET HP: {Math.round(monsterHp)}%
           </div>
 
           <div style={{ width: "150px", height: "3px", backgroundColor: "rgba(255,255,255,0.1)", marginTop: "1.5rem", borderRadius: '2px', overflow: 'hidden' }}>
@@ -153,7 +153,7 @@ export default function BattlePage() {
             }} />
           </div>
           <div style={{ color: wrongAnswers >= 2 ? '#ff4444' : '#00ffcc', fontSize: '0.5rem', marginTop: '0.4rem', letterSpacing: '1px' }}>
-            CORE INTEGRITY
+            ELLI'S HP
           </div>
         </div>
       </div>

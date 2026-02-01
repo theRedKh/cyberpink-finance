@@ -4,7 +4,7 @@ import quest1Enemy1 from "../../assets/images/quest1_enemy1.png";
 import quest1Enemy2 from "../../assets/images/quest1_enemy2.png";
 import quest2Enemy from "../../assets/images/quest2_enemy.png";
 import quest3Enemy from "../../assets/images/quest3_enemy.png";
-
+import boss from "../../assets/images/INFLUX.png";
 type MonsterProps = {
   className?: string;
   alt?: string;
@@ -28,6 +28,9 @@ export default function Monster({ className, alt, width, height }: MonsterProps)
       break;
     case "quest3":
       src = quest3Enemy;
+      break;
+    case "quest4":
+      src = boss;
       break;
     default:
       src = quest2Enemy;
