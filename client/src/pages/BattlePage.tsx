@@ -4,6 +4,7 @@ import Monster from "../components/battle/Monster";
 import { QuestionCard } from "../components/battle/QuestionCard";
 import { useGame } from "../app/GameProvider";
 import battleBg from "../assets/images/main_wallpaper.png"; 
+import elli from "../assets/images/MC.png";
 
 export default function BattlePage() {
   const { gameState, setGameState } = useGame();
@@ -120,7 +121,7 @@ export default function BattlePage() {
         </div>
       </nav>
 
-      <div style={{ flex: 1, zIndex: 5, display: "flex", alignItems: "center", justifyContent: "center", gap: "6rem", marginTop: "-2rem" }}>
+      <div style={{ flex: 1, zIndex: 5, display: "flex", alignItems: "center", justifyContent: "space-evenly", gap: "5rem", marginTop: "-2rem" }}>
         <div style={{ width: 400 }}>
           <div style={{ color: '#7c3aed', fontSize: '0.7rem', letterSpacing: '3px', marginBottom: '1rem', fontWeight: 'bold' }}>▸ SELECT PROTOCOL</div>
           <QuestionCard
@@ -144,6 +145,10 @@ export default function BattlePage() {
             TARGET HP: {Math.round(monsterHp)}%
           </div>
 
+          
+        </div>
+        <div style={{width: 300, alignContent: 'right', margin: 0, padding:0 }}>
+          <img src={elli} alt="Elli" style={{ width: 300, height: 'auto' }} />
           <div style={{ width: "150px", height: "3px", backgroundColor: "rgba(255,255,255,0.1)", marginTop: "1.5rem", borderRadius: '2px', overflow: 'hidden' }}>
             <div style={{ 
               width: `${playerHpPercent}%`, 
