@@ -72,7 +72,7 @@ export default function MapPage() {
     };
 
     if (node.state === 'completed') {
-      return { ...baseStyle, backgroundColor: 'rgba(0, 100, 255, 0.4)', borderColor: '#00ccff', color: '#fff' };
+      return { ...baseStyle, backgroundColor: 'rgba(70, 28, 103, 0.4)', borderColor: '#8342b8', color: '#fff' };
     } else if (node.state === 'active') {
       return { ...baseStyle, backgroundColor: 'rgba(255, 0, 255, 0.3)', borderColor: '#ff00ff', color: '#fff', transform: 'scale(1.05)' };
     } else {
@@ -102,7 +102,7 @@ export default function MapPage() {
                   {node.state === 'locked' ? (
                      <div style={{ fontSize: '1.2rem' }}>🔒</div>
                   ) : node.state === 'completed' ? (
-                     <div style={{ color: '#00ffcc', fontWeight: 'bold' }}>✓</div>
+                     <div style={{ color: '#5f0f87', fontWeight: 'bold' }}>✓</div>
                   ) : (
                      <div style={{ fontSize: '0.6rem', color: '#ff00ff', letterSpacing: '1px' }}>READY</div>
                   )}
