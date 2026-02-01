@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import React from "react";
+import React, { useState } from "react"; // Added useState
 import { useNavigate } from "react-router-dom";
 import Monster from "../components/battle/Monster";
 import { QuestionCard } from "../components/battle/QuestionCard";
 import { useGame } from "../app/GameProvider";
 import battleBg from "../assets/images/main_wallpaper.png"; 
-=======
-import Modal from "../components/ui/Modal";
-import Monster from "../components/battle/Monster";
-import { QuestionCard } from "../components/battle/QuestionCard";
-import { useGame } from "../app/GameProvider";
-import ClarityPuzzle from "../components/hud/ClarityPuzzle";
-import StatsBar from "../components/hud/StatsBar";
->>>>>>> b29e5405dc7560287d39f445a57dc8d3b5114d48
 
 export default function BattlePage() {
   const { gameState, setGameState } = useGame();
@@ -21,24 +12,20 @@ export default function BattlePage() {
   
   const TOTAL_PHASES = 5;
 
-  /** * FIX: The ?? 100 ensures that if monsterHp is missing from your 
-   * GameProvider state, the app won't crash and will default to 100.
-   */
-  const monsterHp = gameState.monsterHp ?? 100;
+  // FIX: Use local state instead of GameProvider to avoid Type errors
+  const [monsterHp, setMonsterHp] = useState(100);
 
   const handleAnswer = (selectedOptionIndex: number, correct: boolean) => {
-    // 1. Calculate new player HP (Lose 20 per wrong answer)
+    // 1. Calculate new player HP
     const newHp = correct ? player.hp : Math.max(0, player.hp - 20);
     
-    // 2. Check for Victory (Must be last phase AND correct)
+    // 2. Check for Victory
     const isVictory = currentFight >= TOTAL_PHASES - 1 && correct;
 
-    // --- CASE A: VICTORY ---
     if (isVictory) {
       setGameState({
         ...gameState,
         currentFight: 0,
-        monsterHp: 100, // Reset monster health
         player: {
           ...player,
           completedQuests: [...player.completedQuests, currentQuest] as any,
@@ -48,30 +35,28 @@ export default function BattlePage() {
       });
       navigate('/bank'); 
     } 
-    // --- CASE B: DEATH ---
     else if (!correct && newHp <= 0) {
+      // DEATH
       setGameState({ 
         ...gameState, 
         currentFight: 0, 
-        monsterHp: 100, // Reset for the retry
         player: { ...player, hp: 0 } 
       });
-      navigate('/death'); // Go to your existing deathPage.tsx
+      navigate('/death');
     } 
-    // --- CASE C: PROGRESS (ONLY ON CORRECT) ---
     else if (correct) {
+      // PROGRESS: Reduce monster HP locally and move to next question
+      setMonsterHp(prev => Math.max(0, prev - 20));
       setGameState({
         ...gameState,
         currentFight: currentFight + 1,
-        monsterHp: Math.max(0, monsterHp - 20),
         player: { ...player, hp: newHp }
       });
     } 
-    // --- CASE D: WRONG ANSWER (STILL ALIVE) ---
     else {
+      // WRONG: Just take player damage, don't move currentFight
       setGameState({
         ...gameState,
-        // currentFight stays the same so they have to try the question again
         player: { ...player, hp: newHp }
       });
     }
@@ -85,8 +70,7 @@ export default function BattlePage() {
     }}>
       <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(10, 0, 20, 0.85)", zIndex: 0 }} />
 
-<<<<<<< HEAD
-      {/* --- HUD NAV BAR --- */}
+      {/* HUD NAV BAR */}
       <nav style={{ 
         zIndex: 10, 
         display: "flex", 
@@ -107,19 +91,6 @@ export default function BattlePage() {
           <div style={{ textAlign: "center" }}>
             <div style={{ color: "#a78bfa", fontSize: "0.6rem" }}>NEURAL HEALTH</div>
             <div style={{ color: player.hp < 40 ? "#ff4444" : "#00ffcc", fontSize: "1.1rem", fontWeight: "bold" }}>{player.hp}%</div>
-=======
-      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "center", gap: "2rem", padding: "2rem", position: 'relative' }}>
-          {/* Left: Question Card */}
-          <div style={{ width: 360, flexShrink: 0 }}>
-            <QuestionCard
-              questId={currentQuest}
-              questionIndex={currentFight}
-              onAnswer={(selectedOption, correct) => {
-                console.log("answered", selectedOption, correct);
-              }}
-            />
->>>>>>> b29e5405dc7560287d39f445a57dc8d3b5114d48
           </div>
           <div style={{ textAlign: "center" }}>
             <div style={{ color: "#a78bfa", fontSize: "0.6rem" }}>CREDITS</div>
@@ -139,10 +110,7 @@ export default function BattlePage() {
         </div>
       </nav>
 
-      {/* --- BATTLE STAGE --- */}
       <div style={{ flex: 1, zIndex: 5, display: "flex", alignItems: "center", justifyContent: "center", gap: "6rem", marginTop: "-2rem" }}>
-        
-        {/* LEFT: QUESTION AREA */}
         <div style={{ width: 400 }}>
           <div style={{ color: '#7c3aed', fontSize: '0.7rem', letterSpacing: '3px', marginBottom: '1rem', fontWeight: 'bold' }}>▸ SELECT PROTOCOL</div>
           <QuestionCard
@@ -153,10 +121,8 @@ export default function BattlePage() {
           />
         </div>
 
-        {/* RIGHT: MONSTER AREA */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", animation: "bossFloat 4s ease-in-out infinite" }}>
           <Monster width={450} height={450} />
-          
           <div style={{ width: "250px", height: "6px", backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid #ff00ff", marginTop: "1rem", padding: '2px', borderRadius: '4px' }}>
             <div style={{ 
               width: `${monsterHp}%`, height: "100%", backgroundColor: "#ff00ff", 
@@ -169,20 +135,12 @@ export default function BattlePage() {
         </div>
       </div>
 
-<<<<<<< HEAD
       <style>{`
         @keyframes bossFloat {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
         }
       `}</style>
-=======
-      {/* Top-right HUD: Clarity puzzle and StatsBar (credits) */}
-      <div style={{ position: 'fixed', top: 16, right: 16, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12, zIndex: 1100 }}>
-        <ClarityPuzzle />
-        <StatsBar label="Credits" value={player.credits} max={Math.max(player.credits, 100)} width="180px" />
-      </div>
->>>>>>> b29e5405dc7560287d39f445a57dc8d3b5114d48
     </div>
   );
 }

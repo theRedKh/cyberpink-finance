@@ -4,13 +4,6 @@ import type { Question, QuestId } from "../game/types";
 export const QUESTIONS: Record<QuestId, Question[]> = {
   quest1: [
     {
-      id: "q1",
-      question: "Two monsters with 3 health each. (Scenario introduction, optional for context)",
-      options: ["", "", "", ""],
-      answer: 0,
-      explanation: "This is just context for the quest setup."
-    },
-    {
       id: "q2",
       question: "True or False: There is no point in starting a savings account at a young age.",
       options: ["True", "False"],
