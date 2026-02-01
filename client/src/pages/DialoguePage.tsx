@@ -91,49 +91,44 @@ export default function DialoguePage() {
     }}>
       <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.7)' }} />
 
-      <Modal type="dialogue" style={{ width: "min(92vw, 650px)", zIndex: 10, background: 'rgba(12, 8, 20, 0.98)', border: '1px solid #7c3aed' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1rem' }}>
+      <Modal type="dialogue" style={{ width: "min(95vw, 750px)", zIndex: 10, background: 'rgba(12, 8, 20, 0.98)', border: '1px solid #7c3aed' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1.5rem' }}>
           
-          {/* HEADER WITH CHARACTER IMAGE PLACEHOLDER */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', borderBottom: '1px solid #2e1065', paddingBottom: '1rem' }}>
-            <div style={{ 
-              width: '70px', height: '70px', borderRadius: '8px', 
-              background: '#000', border: '1px solid #4c1d95',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              overflow: 'hidden'
-            }}>
+          {/* HEADER WITH UPDATED CLASSES */}
+          <div className="dialogue-header">
+            <div className="portrait-placeholder">
               {getSpeakerAsset(currentLine.speaker) ? (
                 <img 
                     src={getSpeakerAsset(currentLine.speaker)!} 
                     alt={currentLine.speaker} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    className="portrait-image"
                 />
               ) : (
-                <div style={{ color: '#2e1065', fontSize: '0.6rem' }}>NO IMAGE</div>
+                <div className="no-image-text">??</div>
               )}
             </div>
             
-            <h3 style={{ color: '#a78bfa', fontSize: '0.9rem', letterSpacing: '3px', margin: 0 }}>
+            <h3 className="speaker-name">
               {currentLine.speaker.toUpperCase()}
             </h3>
           </div>
 
           {/* TEXT AREA */}
-          <div style={{ minHeight: '150px', display: 'flex', alignItems: 'center' }}>
-            <p style={{ color: '#fff', fontSize: '1.2rem', lineHeight: '1.8', fontStyle: 'italic' }}>
+          <div style={{ minHeight: '120px', display: 'flex', alignItems: 'center' }}>
+            <div className="dialogue-text-content">
               <HighlightableText
                 text={formatDialogueText(currentLine.text)}
                 terms={Object.keys(GLOSSARY)}
                 onTermClick={handleTermClick}
               />
-            </p>
+              </div>
           </div>
 
           {/* FOOTER */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #2e1065', paddingTop: '1rem' }}>
+          <div className="dialogue-nav">
             <Button onClick={() => setCurrentIndex(i => i - 1)} disabled={currentIndex === 0}>←</Button>
             
-            <span style={{ color: '#7c3aed', fontSize: '0.8rem', fontFamily: 'Orbitron' }}>
+            <span className="dialogue-counter">
               {activePhase.toUpperCase()} — {currentIndex + 1} / {dialogues.length}
             </span>
 

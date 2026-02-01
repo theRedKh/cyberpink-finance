@@ -66,3 +66,74 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* ... existing styles ... */
+
+/* Header section of the dialogue modal */
+.dialogue-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid #2e1065;
+  padding-bottom: 1rem;
+}
+
+/* Portrait Container */
+.portrait-placeholder {
+  width: 140px; /* Adjusted width for portrait look */
+  height: 180px; /* Requested height */
+  border-radius: 8px;
+  background: #000;
+  border: 1px solid #4c1d95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0; /* Prevents the image from squishing */
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+.portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.no-image-text {
+  color: #2e1065;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.speaker-name {
+  color: #a78bfa;
+  font-size: 1.1rem; /* Slightly larger to match the bigger portrait */
+  letter-spacing: 3px;
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+}
+
+
+.glossary-term {
+  color: #00ffff !important; /* Forces the cyan color */
+  font-weight: bold;
+  text-decoration: underline dotted;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.glossary-term:hover {
+  color: #a78bfa !important;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+/* New class for the dialogue text container to replace inline styles */
+.dialogue-text-content {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-style: italic;
+  margin: 0;
+}
