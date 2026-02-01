@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Monster from "../components/battle/Monster";
 import { QuestionCard } from "../components/battle/QuestionCard";
 import { useGame } from "../app/GameProvider";
 import battleBg from "../assets/images/main_wallpaper.png"; 
+=======
+import Modal from "../components/ui/Modal";
+import Monster from "../components/battle/Monster";
+import { QuestionCard } from "../components/battle/QuestionCard";
+import { useGame } from "../app/GameProvider";
+import ClarityPuzzle from "../components/hud/ClarityPuzzle";
+import StatsBar from "../components/hud/StatsBar";
+>>>>>>> b29e5405dc7560287d39f445a57dc8d3b5114d48
 
 export default function BattlePage() {
   const { gameState, setGameState } = useGame();
@@ -76,6 +85,7 @@ export default function BattlePage() {
     }}>
       <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(10, 0, 20, 0.85)", zIndex: 0 }} />
 
+<<<<<<< HEAD
       {/* --- HUD NAV BAR --- */}
       <nav style={{ 
         zIndex: 10, 
@@ -97,6 +107,19 @@ export default function BattlePage() {
           <div style={{ textAlign: "center" }}>
             <div style={{ color: "#a78bfa", fontSize: "0.6rem" }}>NEURAL HEALTH</div>
             <div style={{ color: player.hp < 40 ? "#ff4444" : "#00ffcc", fontSize: "1.1rem", fontWeight: "bold" }}>{player.hp}%</div>
+=======
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "center", gap: "2rem", padding: "2rem", position: 'relative' }}>
+          {/* Left: Question Card */}
+          <div style={{ width: 360, flexShrink: 0 }}>
+            <QuestionCard
+              questId={currentQuest}
+              questionIndex={currentFight}
+              onAnswer={(selectedOption, correct) => {
+                console.log("answered", selectedOption, correct);
+              }}
+            />
+>>>>>>> b29e5405dc7560287d39f445a57dc8d3b5114d48
           </div>
           <div style={{ textAlign: "center" }}>
             <div style={{ color: "#a78bfa", fontSize: "0.6rem" }}>CREDITS</div>
@@ -146,12 +169,20 @@ export default function BattlePage() {
         </div>
       </div>
 
+<<<<<<< HEAD
       <style>{`
         @keyframes bossFloat {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
         }
       `}</style>
+=======
+      {/* Top-right HUD: Clarity puzzle and StatsBar (credits) */}
+      <div style={{ position: 'fixed', top: 16, right: 16, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12, zIndex: 1100 }}>
+        <ClarityPuzzle />
+        <StatsBar label="Credits" value={player.credits} max={Math.max(player.credits, 100)} width="180px" />
+      </div>
+>>>>>>> b29e5405dc7560287d39f445a57dc8d3b5114d48
     </div>
   );
 }

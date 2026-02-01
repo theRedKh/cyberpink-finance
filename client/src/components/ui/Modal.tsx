@@ -19,7 +19,6 @@ export const Modal: React.FC<ModalProps> = ({
   type, 
   children, 
   questName, 
-  playerState,
   style 
 }) => {
   const isDialogue = type === 'dialogue';
@@ -67,12 +66,34 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div style={containerStyle}>
-      <div style={{ 
-        padding: isDialogue ? '2.5rem' : '0', 
-        height: '100%', 
-        display: 'flex', 
-        flexDirection: 'column',
-        boxSizing: 'border-box'
+      {/* Quest Display - title box shows only the quest name */}
+      {isTitle && questName && (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          marginBottom: '0.75rem',
+          paddingBottom: '0.75rem',
+          borderBottom: '1px solid rgba(255, 0, 255, 0.3)',
+        }}>
+          {questName && (
+            <div style={{
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              color: '#ff00ff',
+              textShadow: '0 0 10px rgba(255, 0, 255, 0.5)',
+            }}>
+              Quest: {questName}
+            </div>
+          )}
+        </div>
+      )}
+      
+      {/* Main content */}
+      <div style={{
+        fontSize: isDialogue ? '1rem' : '0.95rem',
+        lineHeight: '1.6',
+        color: 'rgba(255, 255, 255, 0.9)',
       }}>
         {isTitle && (questName || playerState) && (
           <div style={{
