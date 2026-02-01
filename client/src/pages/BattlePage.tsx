@@ -11,9 +11,9 @@ export default function BattlePage() {
   const { currentQuest, currentFight, player } = gameState;
   
   const TOTAL_PHASES = 5;
-
   // FIX: Use local state instead of GameProvider to avoid Type errors
   const [monsterHp, setMonsterHp] = useState(100);
+  const battleBg = `/assets/images/battle_bg.webp`;
 
   const handleAnswer = (selectedOptionIndex: number, correct: boolean) => {
     // 1. Calculate new player HP

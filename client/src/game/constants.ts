@@ -1,8 +1,10 @@
 import type { QuestId } from "./types";
 export const STARTING_CREDITS = 0;
-export const CREDITS_Q1 = 20;
-export const CREDITS_Q2 = 25;
-export const CREDITS_Q3 = 25;
+export const CREDITS_Q1 = 20; //quest 1 should give 20 credits by default
+export const CREDITS_Q2 = 25; //quest 2 gives 25 credits by default
+export const CREDITS_Q3 = 25; //quest 3 gives 25 credits by default
+
+
 export const CREDITS_PER_CORRECT = 10; 
 export const CREDITS_PER_WRONG = -2; 
 export const CREDITS_FOR_GOOD_BANK = 500;
