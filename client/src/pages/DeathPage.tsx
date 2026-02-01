@@ -11,7 +11,7 @@ export const DeathPage = ({ message = "You have been defeated!" }: DeathPageProp
   const navigate = useNavigate();
 
   const handleRestart = () => {
-    navigate('/home'); // back to HomeBasePage
+    navigate('/'); // back to HomeBasePage
   };
 
   return (

@@ -109,7 +109,6 @@ export const DIALOGUE: DialogueStructure = {
         ],
     },
     npcScene: [
-        // NPC scene occurs once, right before the first transition to home base
         {
             id: "npc_intro_1",
             speaker: "Last Banker",
