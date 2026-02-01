@@ -19,7 +19,7 @@ export default function WarningText() {
       backdropFilter: 'blur(4px)',
       border: '2px solid rgba(255, 0, 0, 0.5)',
     }}>
-      "Influx is watching… proceed carefully."
+      "INFLUX is watching… proceed carefully."
     </div>
   );
 }
