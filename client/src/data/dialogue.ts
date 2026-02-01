@@ -168,7 +168,7 @@ export const DIALOGUE: DialogueStructure = {
             speaker: "The Last Banker",
             text: "I believe that you have the power to take down Influx Inc. Go to their headquarters and stop them.",
             sceneType: "general"
-        },
+        },        
         ],
     },
     introScene: [
@@ -228,8 +228,20 @@ export const DIALOGUE: DialogueStructure = {
     ],
     bossScene: {
         quest4: [
-            // Influx dialogues for final boss
-            // Add dialogue entries here
+             {
+            id: "evil_banker1",
+            speaker: "The Last Banker",
+            text: "You think you can stop us! We have the power of high interest loans on our side!",
+            sceneType: "general"
+        },
+         {
+            id: "evil_banker2",
+            speaker: "The Last Banker",
+            text: "Hmmph well that's not all! Lets see how you deal with this! ",
+            sceneType: "general"
+        },
+
+        
         ],
     },
 };
