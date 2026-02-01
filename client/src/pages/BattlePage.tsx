@@ -2,7 +2,6 @@ import Modal from "../components/ui/Modal";
 import Monster from "../components/battle/Monster";
 import { QuestionCard } from "../components/battle/QuestionCard";
 import { useGame } from "../app/GameProvider";
-import ClarityPuzzle from "../components/hud/ClarityPuzzle";
 import StatsBar from "../components/hud/StatsBar";
 
 export default function BattlePage() {
@@ -15,7 +14,6 @@ export default function BattlePage() {
         type="title"
         questName={currentQuest}
         playerState={{
-          hp: player.hp,
           credits: player.credits,
           clarity: player.clarity,
           creditScore: player.creditScore,
@@ -50,7 +48,6 @@ export default function BattlePage() {
 
       {/* Top-right HUD: Clarity puzzle and StatsBar (credits) */}
       <div style={{ position: 'fixed', top: 16, right: 16, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12, zIndex: 1100 }}>
-        <ClarityPuzzle />
         <StatsBar label="Credits" value={player.credits} max={Math.max(player.credits, 100)} width="180px" />
       </div>
     </div>
