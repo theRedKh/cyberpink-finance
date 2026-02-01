@@ -209,7 +209,7 @@ export const DIALOGUE: DialogueStructure = {
          {
             id: "player_4",
             speaker: "Elli",
-            text: "I didn’t know there was a second bank in Cyber Pink.",
+            text: "I didn't know there was a second bank in Cyber Pink.",
             sceneType: "pre-quest"
         },
         {
