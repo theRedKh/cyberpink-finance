@@ -6,6 +6,7 @@ import { Button } from '../components/ui/Button';
 import { getHomeBaseDialogue, formatDialogueText } from '../data/dialogue';
 import type { QuestId } from '../game/types';
 import Modal from '../components/ui/Modal';
+import '../styles/homebase.css';
 
 const getBankTellerRewards = (gameState: any) => {
   const { player } = gameState;
@@ -100,22 +101,16 @@ export default function BasePage() {
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           
           {/* HEADER */}
-          <div style={{ textAlign: 'center', height: '170px', paddingTop: '10px' }}>
-            <div style={{ 
-              width: '120px', height: '120px', margin: '0 auto', borderRadius: '50%', 
-              border: '3px solid #7c3aed', overflow: 'hidden',
-              display: 'flex', justifyContent: 'center', alignItems: 'center',
-              backgroundColor: '#000', boxShadow: '0 0 25px rgba(124, 58, 237, 0.4)'
-            }}>
+          <div className='speaker-container'>
+            <div className='img-container'>  
               <img 
                 src={'src/assets/images/last_banker.png'} 
-                alt="Bank Teller" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} 
+                alt="Bank Teller"  
               />
             </div>
-            <div style={{ color: '#a78bfa', fontFamily: '"Orbitron", sans-serif', fontSize: '0.85rem', marginTop: '0.8rem', letterSpacing: '3px', fontWeight: 'bold' }}>
+            <h3 style={{ color: '#a78bfa', fontFamily: '"Orbitron", sans-serif', fontSize: '0.85rem', marginTop: '0.8rem', letterSpacing: '3px', fontWeight: 'bold' }}>
               BANK TELLER
-            </div>
+            </h3>
           </div>
 
           {/* MIDDLE AREA */}
