@@ -90,7 +90,7 @@ export default function MapPage() {
 
       <div style={{ zIndex: 2, textAlign: 'center' }}>
         <h1 style={{ color: '#fff', fontFamily: '"Orbitron"', fontSize: '3rem', marginBottom: '4rem', textShadow: '0 0 15px #ff00ff' }}>
-          QUEST NETWORK
+          QUEST VAULT
         </h1>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0', flexWrap: 'wrap', justifyContent: 'center' }}>
