@@ -1,8 +1,6 @@
 import type { PlayerState, QuestId, CreditScore, Question } from "./types";
 import { 
-    STARTING_CREDITS, 
-    STARTING_HP,
-    STARTING_CLARITY,
+    STARTING_CREDITS,
     STORAGE_KEY_GAME_STATE,
     STORAGE_KEY_PLAYER_ID,
     CREDIT_SCORE_THRESHOLDS
@@ -44,9 +42,8 @@ function getPlayerId(): string {
 function createInitialPlayerState(): PlayerState {
     const playerId = getPlayerId();
     return {
+        hp: 3,
         credits: STARTING_CREDITS,
-        clarity: STARTING_CLARITY,
-        hp: STARTING_HP,
         creditScore: calculateCreditScore(STARTING_CREDITS),
         inventory: [],
         bankChoice: null,

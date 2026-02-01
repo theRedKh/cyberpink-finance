@@ -102,12 +102,12 @@ export default function BasePage() {
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           
           {/* HEADER */}
-          <div style={{ textAlign: 'center', height: '90px' }}>
+          <div style={{ textAlign: 'center', height: '108px' }}>
             <div style={{ 
-              width: 60, height: 60, margin: '0 auto', borderRadius: '50%', 
+              width: '80px', height: '80px', margin: '0 auto', borderRadius: '50%', 
               border: '2px solid #7c3aed', overflow: 'hidden' 
             }}>
-              <img src={'src/assets/images/bankTellerImage.png'} alt="Bank Teller" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={'src/assets/images/last_banker.png'} alt="Bank Teller" style={{ width: '140px', height: '140px' }} />
             </div>
             <div style={{ color: '#a78bfa', fontFamily: '"Orbitron", sans-serif', fontSize: '0.75rem', marginTop: '0.4rem', letterSpacing: '2px' }}>
               BANK TELLER

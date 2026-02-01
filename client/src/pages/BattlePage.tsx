@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Monster from "../components/battle/Monster";
 import { QuestionCard } from "../components/battle/QuestionCard";
@@ -10,14 +10,12 @@ export default function BattlePage() {
   const navigate = useNavigate();
   const { currentQuest, currentFight, player } = gameState;
   
-  // Hardcoded to 3 phases per quest
   const TOTAL_PHASES = 3;
-
-  // Track health locally to prevent "hp does not exist on player" global state errors
+  // FIX: Use local state instead of GameProvider to avoid Type errors
   const [monsterHp, setMonsterHp] = useState(100);
-  const [playerHp, setPlayerHp] = useState(100); 
+  const [playerHp, setPlayerHp] = useState(player.hp);
 
-  const handleAnswer = (selectedOptionIndex: number, correct: boolean) => {
+  const handleAnswer = (_selectedOptionIndex: number, correct: boolean) => {
     if (correct) {
       const isQuestComplete = currentFight >= TOTAL_PHASES - 1;
 
@@ -56,12 +54,18 @@ export default function BattlePage() {
       }
     } else {
       // Logic for wrong answer: 4 strikes and you're out (25 HP each)
-      const nextPlayerHp = playerHp - 25; 
+      const nextPlayerHp = Math.max(0, playerHp - 25);
       setPlayerHp(nextPlayerHp);
+
+      // Persist HP to global game state and reset fight if dead
+      setGameState({
+        ...gameState,
+        player: { ...player, hp: nextPlayerHp },
+        currentFight: nextPlayerHp <= 0 ? 0 : currentFight
+      });
 
       if (nextPlayerHp <= 0) {
         // Reset fight progress and navigate to DeathPage
-        setGameState({ ...gameState, currentFight: 0 });
         navigate('/death');
       }
     }
