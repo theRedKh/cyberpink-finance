@@ -9,8 +9,8 @@ import { DIALOGUE, formatDialogueText } from "../data/dialogue";
 import { useGame } from "../app/GameProvider";
 
 // Assets
-import introWallpaper from '../assets/images/battle_bg.webp'; // Placeholder for intro bg
-import baseWallpaper from '../assets/images/main_wallpaper.png';   // Banker's bank bg
+import introWallpaper from '../assets/images/battle_bg.webp'; 
+import baseWallpaper from '../assets/images/main_wallpaper.png';  
 import elliPortrait from '../assets/images/MC.png';
 import bankerPortrait from '../assets/images/last_banker.png';
 
@@ -22,7 +22,10 @@ export default function DialoguePage() {
   const navigate = useNavigate();
   const { gameState, setGameState } = useGame();
   
-  // Track current phase: 'intro' or a specific QuestId
+  /**
+   * State Management
+   * activePhase tracks whether we are in 'intro' or a specific 'questX'
+   */
   const [activePhase, setActivePhase] = useState<string>(urlQuestId || 'intro');
   const [currentIndex, setCurrentIndex] = useState(0);
   
@@ -30,44 +33,74 @@ export default function DialoguePage() {
   const [glossaryOpen, setGlossaryOpen] = useState(false);
   const [glossaryItem, setGlossaryItem] = useState<{ term: string; definition: string } | null>(null);
 
-  // Determine current dialogue set
+  /**
+   * Sync local state with URL parameters.
+   * This prevents skipping the intro if the component mounts with a different param.
+   */
+  useEffect(() => {
+    if (urlQuestId) {
+      setActivePhase(urlQuestId);
+      setCurrentIndex(0);
+    }
+  }, [urlQuestId]);
+
+  /**
+   * Dialogue Selector Logic
+   */
   const dialogues = useMemo(() => {
-    if (activePhase === 'intro') return DIALOGUE.introScene;
-    if (DIALOGUE.homeBase[activePhase as QuestId]) return DIALOGUE.homeBase[activePhase as QuestId];
+    if (urlQuestId === 'intro') {
+      console.log('intro')
+      return DIALOGUE.introScene;
+    }
+
+    if (!gameState.player.hasSeenIntro) {
+      // If intro hasn't been seen, show intro dialogue regardless of URL param
+      return DIALOGUE.introScene;
+    }
+    // Type cast to QuestId to access homeBase record
+    const qId = activePhase as QuestId;
+    if (DIALOGUE.homeBase[qId]) {
+      return DIALOGUE.homeBase[qId];
+    }
     return [];
-  }, [activePhase]);
+  }, [activePhase, gameState.player.hasSeenIntro, urlQuestId]);
 
   const currentLine = dialogues[currentIndex];
   const isLastLine = currentIndex === dialogues.length - 1;
 
-  // Asset Logic
+  /**
+   * Dynamic Assets logic
+   */
   const isQuestDialogue = activePhase !== 'intro';
   const background = isQuestDialogue ? baseWallpaper : introWallpaper;
   
-  // Character Asset Placeholder Logic
   const getSpeakerAsset = (speaker: string) => {
     if (speaker === "Elli") return elliPortrait;
     if (speaker === "The Last Banker") {
-        // Only show banker image if we have moved into the quest phase
+        // As requested: Banker is blank during Intro, visible during Quest1+
         return isQuestDialogue ? bankerPortrait : null; 
     }
     return null;
   };
 
+  /**
+   * Navigation Logic
+   */
   const handleNext = () => {
     if (!isLastLine) {
       setCurrentIndex(prev => prev + 1);
     } else {
       if (activePhase === 'intro') {
-        // TRANSITION: Intro finished -> Move to Quest 1 dialogue immediately
+        // Update GameState so BasePage knows the intro is done
         setGameState({
             ...gameState,
             player: { ...gameState.player, hasSeenIntro: true }
         });
+        // Immediate internal transition to Quest 1
         setActivePhase('quest1');
         setCurrentIndex(0);
       } else {
-        // Finished quest dialogue -> Go to map
+        // Finished current quest dialogue, move to world map
         navigate('/map');
       }
     }
@@ -81,20 +114,22 @@ export default function DialoguePage() {
     }
   };
 
+  // Guard against empty dialogue arrays
   if (!currentLine) return null;
 
   return (
-    <div style={{ 
+    <div className="dialogue-page-container" style={{ 
       position: 'fixed', inset: 0, backgroundImage: `url(${background})`, 
-      backgroundSize: 'cover', transition: 'background-image 1s ease-in-out',
+      backgroundSize: 'cover', transition: 'background-image 1.2s ease-in-out',
       display: 'flex', alignItems: 'center', justifyContent: 'center' 
     }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.7)' }} />
+      {/* Dark overlay for readability */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.7)', zIndex: 1 }} />
 
       <Modal type="dialogue" style={{ width: "min(95vw, 750px)", zIndex: 10, background: 'rgba(12, 8, 20, 0.98)', border: '1px solid #7c3aed' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1.5rem' }}>
           
-          {/* HEADER WITH UPDATED CLASSES */}
+          {/* HEADER SECTION: Portrait and Speaker Name */}
           <div className="dialogue-header">
             <div className="portrait-placeholder">
               {getSpeakerAsset(currentLine.speaker) ? (
@@ -113,20 +148,25 @@ export default function DialoguePage() {
             </h3>
           </div>
 
-          {/* TEXT AREA */}
-          <div style={{ minHeight: '120px', display: 'flex', alignItems: 'center' }}>
+          {/* MAIN TEXT AREA: Contains the glossary logic */}
+          <div style={{ minHeight: '130px', display: 'flex', alignItems: 'flex-start', paddingTop: '10px' }}>
             <div className="dialogue-text-content">
               <HighlightableText
                 text={formatDialogueText(currentLine.text)}
                 terms={Object.keys(GLOSSARY)}
                 onTermClick={handleTermClick}
               />
-              </div>
+            </div>
           </div>
 
-          {/* FOOTER */}
+          {/* NAVIGATION FOOTER */}
           <div className="dialogue-nav">
-            <Button onClick={() => setCurrentIndex(i => i - 1)} disabled={currentIndex === 0}>←</Button>
+            <Button 
+              onClick={() => setCurrentIndex(i => i - 1)} 
+              disabled={currentIndex === 0}
+            >
+              ←
+            </Button>
             
             <span className="dialogue-counter">
               {activePhase.toUpperCase()} — {currentIndex + 1} / {dialogues.length}
@@ -139,6 +179,7 @@ export default function DialoguePage() {
         </div>
       </Modal>
 
+      {/* Glossary Pop-up */}
       <GlossaryModal
         open={glossaryOpen}
         term={glossaryItem?.term}

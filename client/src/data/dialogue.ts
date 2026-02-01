@@ -33,76 +33,11 @@ export type DialogueStructure = {
     bossScene: BossSceneDialogue;
 };
 
-export const DIALOGUE: DialogueStructure = {
-    homeBase: {
-        quest1: [
-            {
-            id: "bankerQ1_1",
-            speaker: "The Last Banker",
-            text: "It's my job to know. To create a bank account with us there's some things you are going to need to learn.",
-            sceneType: "general"
-        },
-          {
-            id: "bankerQ1_2",
-            speaker: "The Last Banker",
-            text: "First when opening a bank account, you may be asked what type of account, chequing or savings account?",
-            sceneType: "general"
-        },
 
-        {
-            id: "bankerQ1_3",
-            speaker: "The Last Banker",
-            text: "A chequing account is great for everyday needs like depositing paycheques, paying bills, and withdrawing money from the bank. Chequing accounts typically have lower transaction fee but a lower interest rate.",
-            sceneType: "general"
-        },
-        {
-            id: "bankerQ1_4",
-            speaker: "The Last Banker",
-            text: "A savings account, like the name implies, is great for long term saving and budgeting. In a savings account your money earns more, since it has a higher interest rate.",
-            sceneType: "general"
-        },
-        {
-            id: "bankerQ1_5",
-            speaker: "The Last Banker",
-            text: "Oh how could I forget you're also going to need a card!",
-            sceneType: "general"
-        },
-         {
-            id: "bankerQ1_6",
-            speaker: "The Last Banker",
-            text: "A debit card allows you to have direct access to the money in your chequing account. Though you don’t want to use more money than you have in your chequing account.",
-            sceneType: "general"
-        },
-         {
-            id: "bankerQ1_7",
-            speaker: "The Last Banker",
-            text: "A credit card allows you to borrow money from the bank from a set limit. A credit card can be helpful for building a credit score. Though you must be cautious about paying the bank on time, otherwise you may have to pay interest charges.",
-            sceneType: "general"
-        },
-  {
-            id: "bankerQ1_8",
-            speaker: "The Last Banker",
-            text: "Now go deal with those creatures and in return I will help you with setting up a bank account.",
-            sceneType: "general"
-        },
-        ],
-        quest2: [
-            // Dialogues shown at home base before quest2
-            // Add dialogue entries here
-        ],
-        quest3: [
-            // Dialogues shown at home base before quest3
-            // Add dialogue entries here
-        ],
-        quest4: [
-            // Dialogues shown at home base before final boss
-            // Add dialogue entries here
-        ],
-    },
+export const DIALOGUE: DialogueStructure = {
     introScene: [
         // NPC scene occurs once, right before the first transition to home base
         // Conversation between Player and NPC 1 (mind-controlled NPC)
-        
         {
             id: "player_1",
             speaker: "Elli",
@@ -137,7 +72,7 @@ export const DIALOGUE: DialogueStructure = {
          {
             id: "player_4",
             speaker: "Elli",
-            text: "I didn’t know there was a second bank in Cyber Pink.",
+            text: "I didn't know there was a second bank in Cyber Pink.",
             sceneType: "pre-quest"
         },
         {
@@ -154,10 +89,167 @@ export const DIALOGUE: DialogueStructure = {
         },
 //end of intro dialoge
     ],
+    homeBase: {
+        quest1: [
+            {
+            id: "bankerQ1_1",
+            speaker: "The Last Banker",
+            text: "It's my job to know. To create a bank account with us there's some things you are going to need to learn.",
+            sceneType: "general"
+        },
+          {
+            id: "bankerQ1_2",
+            speaker: "The Last Banker",
+            text: "First when opening a bank account, you may be asked what type of account, checking or savings account?",
+            sceneType: "general"
+        },
+
+        {
+            id: "bankerQ1_3",
+            speaker: "The Last Banker",
+            text: "A checking account is great for everyday needs like depositing paycheques, paying bills, and withdrawing money from the bank. Checking accounts typically have lower transaction fee but a lower interest rate.",
+            sceneType: "general"
+        },
+        {
+            id: "bankerQ1_4",
+            speaker: "The Last Banker",
+            text: "A savings account, like the name implies, is great for long term saving and budgeting. In a savings account your money earns more, since it has a higher interest rate.",
+            sceneType: "general"
+        },
+        {
+            id: "bankerQ1_5",
+            speaker: "The Last Banker",
+            text: "Oh how could I forget you're also going to need a card!",
+            sceneType: "general"
+        },
+         {
+            id: "bankerQ1_6",
+            speaker: "The Last Banker",
+            text: "A debit card allows you to have direct access to the money in your checking account. Though you don’t want to use more money than you have in your checking account.",
+            sceneType: "general"
+        },
+         {
+            id: "bankerQ1_7",
+            speaker: "The Last Banker",
+            text: "A credit card allows you to borrow money from the bank from a set limit. A credit card can be helpful for building a credit score. Though you must be cautious about paying the bank on time, otherwise you may have to pay interest charges.",
+            sceneType: "general"
+        },
+  {
+            id: "bankerQ1_7",
+            speaker: "The Last Banker",
+            text: "Now go deal with those creatures and in return I will help you with setting up a bank account.",
+            sceneType: "general"
+        }
+        ],
+        quest2: [
+             {
+            id: "bankerQ2_1",
+            speaker: "The Last Banker",
+            text: "I fear your adventure is not over yet. I fear Influx Inc has released Loan Sharks into the streets. You will need to learn about loans to defeat them.",
+            sceneType: "general"
+        },
+          {
+            id: "bankerQ2_2",
+            speaker: "The Last Banker",
+            text: "First of all, what is a loan? A loan is a form of credit where a specific amount of money is given, and paid back later. In most cases the bank/lender will add interest to the initial to the principal value.",
+            sceneType: "general"
+        },
+
+         {
+            id: "bankerQ2_3",
+            speaker: "The Last Banker",
+            text: "Before you can take out a loan the bank will collect different information like your credit score to help determine the details of the loan. It will help determine your loan term, interest rate, loan payments.",
+            sceneType: "general"
+        },
+        {
+            id: "bankerQ2_4",
+            speaker: "The Last Banker",
+            text: "The main types of loans that an adventurer like you will run into are student loans, personal loans, and payday loans.",
+            sceneType: "general"
+        },
+        {
+            id: "bankerQ2_5",
+            speaker: "The Last Banker",
+            text: "Now go and bring me back a tooth!",
+            sceneType: "general"
+        }
+        
+        ],
+        quest3: [
+           {
+            id: "bankerQ3_1",
+            speaker: "The Last Banker",
+            text: "Ahh I see those sharks were no match for you!",
+            sceneType: "general"
+        },
+        {
+            id: "bankerQ3_2",
+            speaker: "The Last Banker",
+            text: "I hate to ask for your help again but Influx Inc never stops. After your swift defeat of their loan sharks they have released Auto-Clock, when they finish counting down they destroy any chance of achieving financial freedom.",
+            sceneType: "general"
+        },
+         {
+            id: "bankerQ3_3",
+            speaker: "The Last Banker",
+            text: "You must arm yourself with the power of investing!!",
+            sceneType: "general"
+        },
+        {
+            id: "bankerQ3_4",
+            speaker: "The Last Banker",
+            text: "Investing is a critical tool for achieving financial freedom. Investing is when you put money into assets with the hope that the asset will gain appreciation. There are many different types of assets for example stocks, bonds and protofilos, each with their own benefits and risks.",
+            sceneType: "general"
+        },
+         {
+            id: "bankerQ3_5",
+            speaker: "The Last Banker",
+            text: "Don’t worry we are relying on more than hope for our assets to appreciate. Investments increase in value through compounding interest. Over time this compounding can significantly increase the value of your assets. However that’s not the only factor to consider, you must consider fees that you will have to pay. High fees can significantly reduce your overall returns.",
+            sceneType: "general"
+        },
+         {
+            id: "bankerQ3_6",
+            speaker: "The Last Banker",
+            text: "The best way to maximize your investment is by starting early, the earlier you start the more time your assets have to appreciate. As well as diversifying your portfolio, can help reduce possible risks.",
+            sceneType: "general"
+        },
+         {
+            id: "bankerQ3_7",
+            speaker: "The Last Banker",
+            text: "Lastly you can always speak with an expert financial advisor like me to help pick the best portfolio for you. Now off you go, and bring me back an arm!",
+            sceneType: "general"
+        },
+        ],
+        quest4: [
+             {
+            id: "bankerQ4_1",
+            speaker: "The Last Banker",
+            text: "You’ve done it! You’ve really done it! I’ve never seen such financial power before. I think you are ready now.",
+            sceneType: "general"
+        },
+         {
+            id: "bankerQ4_2",
+            speaker: "The Last Banker",
+            text: "I believe that you have the power to take down Influx Inc. Go to their headquarters and stop them.",
+            sceneType: "general"
+        },        
+        ],
+    }, 
     bossScene: {
         quest4: [
-            // Influx dialogues for final boss
-            // Add dialogue entries here
+             {
+            id: "evil_banker1",
+            speaker: "The Last Banker",
+            text: "You think you can stop us! We have the power of high interest loans on our side!",
+            sceneType: "general"
+        },
+         {
+            id: "evil_banker2",
+            speaker: "The Last Banker",
+            text: "Hmmph well that's not all! Lets see how you deal with this! ",
+            sceneType: "general"
+        },
+
+        
         ],
     },
 };
