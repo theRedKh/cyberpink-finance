@@ -11,6 +11,7 @@ const getBankTellerRewards = (gameState: any) => {
   const { player } = gameState;
   const { completedQuests } = player;
 
+  // Reward logic based on what you JUST finished
   if (completedQuests.includes('quest1') && !completedQuests.includes('quest2')) {
     return {
       showRewards: true,
@@ -45,11 +46,13 @@ export default function BasePage() {
   const [selectedReward, setSelectedReward] = useState<string | null>(null);
   const [currentDialogueIndex, setCurrentDialogueIndex] = useState(0);
 
+  // This calculates where the player is based on their saved "completedQuests"
   const nextQuestId = getNextQuestId(gameState.player.completedQuests);
   const dialogues = getHomeBaseDialogue(nextQuestId);
-  const dialoguesToShow = dialogues.length ? dialogues : [
-    { id: 'default', speaker: 'Bank Teller', text: "Welcome! Complete quests to open an account.", sceneType: 'general' }
-  ];
+  
+  const dialoguesToShow = dialogues.length
+    ? dialogues
+    : [{ id: 'default', speaker: 'Bank Teller', text: "Welcome!", sceneType: 'general' }];
 
   useEffect(() => { setCurrentDialogueIndex(0); }, [nextQuestId]);
 
@@ -64,67 +67,110 @@ export default function BasePage() {
     setSelectedReward(rewardId);
     let updatedPlayer = { ...gameState.player, inventory: [...gameState.player.inventory, rewardId] as any };
     setGameState({ ...gameState, player: updatedPlayer });
-    setTimeout(() => navigate('/map'), 1500);
+    setTimeout(() => navigate('/map'), 1000);
   };
 
   return (
-    <div style={{ position: 'fixed', inset: 0, backgroundImage: `url(${mainWallpaper})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)' }} />
+    <div style={{ 
+      position: 'fixed', inset: 0, 
+      backgroundImage: `url(${mainWallpaper})`, backgroundSize: 'cover', backgroundPosition: 'center',
+      overflow: 'hidden', zIndex: 1
+    }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 2 }} />
 
-      <Modal type="dialogue">
-        <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <Modal
+        type="dialogue"
+        style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)', 
+          height: '400px', 
+          width: '440px',  
+          margin: 0,
+          zIndex: 100,
+          padding: '1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          border: '1px solid rgba(124, 58, 237, 0.5)',
+          background: 'rgba(12, 8, 20, 0.98)',
+          borderRadius: '15px',
+          boxShadow: '0 0 50px rgba(0,0,0,1)'
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           
-          {/* 1. HEADER */}
-          <div style={{ textAlign: 'center', flexShrink: 0 }}>
-            <div style={{ width: 140, height: 140, margin: '0 auto', borderRadius: 20, border: '4px solid #7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 25px #7c3aed', backgroundColor: 'rgba(90,24,154,0.25)', overflow: 'hidden' }}>
+          {/* HEADER */}
+          <div style={{ textAlign: 'center', height: '90px' }}>
+            <div style={{ 
+              width: 60, height: 60, margin: '0 auto', borderRadius: '50%', 
+              border: '2px solid #7c3aed', overflow: 'hidden' 
+            }}>
               <img src={'src/assets/images/bankTellerImage.png'} alt="Bank Teller" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
-            <div style={{ color: '#a78bfa', fontFamily: '"Orbitron", monospace', fontSize: '1.2rem', fontWeight: 'bold', marginTop: '0.75rem' }}>
-              Bank Teller
+            <div style={{ color: '#a78bfa', fontFamily: '"Orbitron", sans-serif', fontSize: '0.75rem', marginTop: '0.4rem', letterSpacing: '2px' }}>
+              BANK TELLER
             </div>
           </div>
 
-          {/* 2. MIDDLE (Centered Text & Rewards) */}
-          <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', overflowY: 'auto' }}>
-            <p style={{ color: '#fff', fontSize: '1.3rem', fontFamily: '"Orbitron", monospace', lineHeight: '1.8', margin: '0 auto', maxWidth: '850px' }}>
-              "{currentDialogue?.text}"
-            </p>
+          {/* MIDDLE AREA */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '15px' }}>
+            
+            <div style={{ height: '70px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 5px' }}>
+              <p style={{ color: '#fff', fontSize: '1.05rem', textAlign: 'center', margin: 0, lineHeight: '1.5', fontWeight: 500 }}>
+                "{currentDialogue?.text}"
+              </p>
+            </div>
 
-            {rewardInfo.showRewards && isLastDialogue && (
-              <div style={{ marginTop: '2.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', padding: '0 2rem' }}>
-                {rewardInfo.rewards.map((reward: any) => (
-                  <div key={reward.id} onClick={() => handleRewardSelect(reward.id)} style={{ padding: '1.5rem', borderRadius: 12, border: '2px solid #7c3aed', background: selectedReward === reward.id ? 'rgba(124,58,237,0.35)' : 'rgba(0,0,0,0.6)', cursor: 'pointer', transition: 'all 0.3s ease' }}>
-                    <div style={{ fontSize: '2.5rem' }}>{reward.icon}</div>
-                    <div style={{ color: '#fff', fontWeight: 'bold', fontFamily: '"Orbitron", monospace' }}>{reward.name}</div>
-                    <div style={{ color: '#ccc', fontSize: '0.85rem' }}>{reward.description}</div>
-                  </div>
-                ))}
-              </div>
-            )}
+            <div style={{ height: '90px' }}>
+              {rewardInfo.showRewards && isLastDialogue && (
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', padding: '0 10px' }}>
+                  {rewardInfo.rewards.map((reward: any) => (
+                    <div 
+                      key={reward.id} 
+                      onClick={() => handleRewardSelect(reward.id)} 
+                      style={{ 
+                        padding: '0.5rem', borderRadius: 8, textAlign: 'center',
+                        border: `1px solid ${selectedReward === reward.id ? '#ff00ff' : '#4c1d95'}`, 
+                        background: selectedReward === reward.id ? 'rgba(255,0,255,0.15)' : 'rgba(0,0,0,0.4)', 
+                        cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <span style={{ fontSize: '1.2rem' }}>{reward.icon}</span>
+                      <span style={{ color: '#fff', fontWeight: 'bold', fontSize: '0.75rem' }}>{reward.name}</span>
+                      <span style={{ color: '#888', fontSize: '0.6rem' }}>{reward.description}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* 3. FOOTER (Stable Navigation) */}
-          <div style={{ flexShrink: 0, width: '100%', maxWidth: '650px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minHeight: '60px' }}>
-              
-              <div style={{ opacity: currentDialogueIndex === 0 ? 0.3 : 1, transition: 'opacity 0.2s' }}>
-                <Button onClick={handlePrev} disabled={currentDialogueIndex === 0}>← Prev</Button>
-              </div>
+          {/* FOOTER */}
+          <div style={{ 
+            marginTop: 'auto',
+            padding: '0.8rem 1.5rem 0 1.5rem', 
+            borderTop: '1px solid rgba(124, 58, 237, 0.2)',
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center' 
+          }}>
+            <Button onClick={currentDialogueIndex === 0 ? () => navigate('/intro') : handlePrev}>
+              {currentDialogueIndex === 0 ? '←' : 'Prev'}
+            </Button>
 
-              <div style={{ textAlign: 'center', flexGrow: 1 }}>
-                {isLastDialogue ? (
-                   <Button small onClick={() => navigate('/map')}>Start Quest</Button>
-                ) : (
-                  <span style={{ color: '#a78bfa', fontFamily: '"Orbitron", monospace', fontSize: '0.9rem', letterSpacing: '2px' }}>
-                    {currentDialogueIndex + 1} / {dialoguesToShow.length}
-                  </span>
-                )}
-              </div>
+            <span style={{ color: '#a78bfa', fontSize: '0.7rem', fontFamily: '"Orbitron", sans-serif' }}>
+              {currentDialogueIndex + 1} / {dialoguesToShow.length}
+            </span>
 
-              <div style={{ opacity: isLastDialogue ? 0.3 : 1, transition: 'opacity 0.2s' }}>
-                <Button onClick={handleNext} disabled={isLastDialogue}>Next →</Button>
-              </div>
-
+            <div style={{ width: '70px', display: 'flex', justifyContent: 'flex-end' }}>
+              {isLastDialogue && !rewardInfo.showRewards ? (
+                <Button onClick={() => navigate('/map')}>Start</Button>
+              ) : (
+                <Button onClick={handleNext} disabled={isLastDialogue}>Next</Button>
+              )}
             </div>
           </div>
 
