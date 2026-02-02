@@ -60,13 +60,13 @@ export const DIALOGUE: DialogueStructure = {
          {
             id: "player_3",
             speaker: "Elli",
-            text: "Wow what is this place?",
+            text: "Wow what is this place? I've never seen anything like it!",
             sceneType: "pre-quest"
         },
         {
             id: "npc1_2",
             speaker: "The Last Banker",
-            text: "Why its a bank of course. The second best bank in Cyber Pink",
+            text: "Why its a bank of course.The second best bank in Cyber Pink",
             sceneType: "pre-quest"
         },
          {
@@ -87,16 +87,17 @@ export const DIALOGUE: DialogueStructure = {
             text: "What how did you know?",
             sceneType: "pre-quest"
         },
-//end of intro dialoge
-    ],
-    homeBase: {
-        quest1: [
-            {
-            id: "bankerQ1_1",
+         {
+            id: "npc1_4",
             speaker: "The Last Banker",
             text: "It's my job to know. To create a bank account with us there's some things you are going to need to learn.",
             sceneType: "general"
         },
+//end of intro dialoge
+    ],
+    homeBase: {
+        quest1: [
+           
           {
             id: "bankerQ1_2",
             speaker: "The Last Banker",
